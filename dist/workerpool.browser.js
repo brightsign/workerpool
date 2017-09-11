@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("os"), require("child_process"));
+		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define(["os", "child_process"], factory);
+		define([], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("os"), require("child_process")) : factory(root["os"], root["child_process"]);
+		var a = factory();
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_8__) {
+})(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -62,7 +62,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @returns {Pool} pool
 	 */
 	exports.pool = function pool(script, options) {
-	  var Pool = __webpack_require__(3);
+	  var Pool = __webpack_require__(2);
 
 	  return new Pool(script, options);
 	};
@@ -72,7 +72,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @param {Object} [methods]
 	 */
 	exports.worker = function worker(methods) {
-	  var worker = __webpack_require__(9);
+	  var worker = __webpack_require__(7);
 	  worker.add(methods);
 	};
 
@@ -80,7 +80,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Create a promise.
 	 * @type {Promise} promise
 	 */
-	exports.Promise = __webpack_require__(4);
+	exports.Promise = __webpack_require__(3);
 
 	exports.platform = environment.platform;
 	exports.isMainThread = environment.isMainThread;
@@ -90,7 +90,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	// used to prevent webpack from resolving requires on node libs
+	/* WEBPACK VAR INJECTION */(function(process) {// used to prevent webpack from resolving requires on node libs
 
 	function isElectron() {
 	  if (typeof window !== 'undefined' && typeof window.process === 'object' && window.process.type === 'renderer') {
@@ -123,21 +123,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	// determines the number of cpus available
 	module.exports.cpus = module.exports.platform === 'browser'
 	  ? self.navigator.hardwareConcurrency
-	  : __webpack_require__(2).cpus().length;  // call node.require to prevent `os` to be required when loading with AMD
+	  : __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"os\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).cpus().length;  // call node.require to prevent `os` to be required when loading with AMD
 
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./../node_modules/process/browser.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))))
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-	module.exports = require("os");
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Promise = __webpack_require__(4);
-	var WorkerHandler = __webpack_require__(5);
+	var Promise = __webpack_require__(3);
+	var WorkerHandler = __webpack_require__(4);
 	var environment = __webpack_require__(1);
 
 	/**
@@ -494,7 +489,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -783,11 +778,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Promise = __webpack_require__(4);
-	var assign = __webpack_require__(6);
+	/* WEBPACK VAR INJECTION */(function(process) {var Promise = __webpack_require__(3);
+	var assign = __webpack_require__(5);
 
 	// determine environment
 	var environment = __webpack_require__(1);
@@ -804,7 +799,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    // use embedded worker.js
-	    var blob = new Blob([__webpack_require__(7)], {type: 'text/javascript'});
+	    var blob = new Blob([__webpack_require__(6)], {type: 'text/javascript'});
 	    return window.URL.createObjectURL(blob);
 	  }
 	  else {
@@ -892,7 +887,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    forkOptions = resolveForkOptions(options);
 
 	    // call node.require to prevent child_process to be required when loading with AMD
-	    this.worker = __webpack_require__(8).fork(
+	    this.worker = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"child_process\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).fork(
 	      this.script,
 	      forkOptions.forkArgs,
 	      forkOptions.forkOpts
@@ -1083,9 +1078,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = WorkerHandler;
 
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./../node_modules/process/browser.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))))
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 	/*
@@ -1181,7 +1177,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports) {
 
 	/**
@@ -1193,16 +1189,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-	module.exports = require("child_process");
-
-/***/ }),
-/* 9 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/**
+	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * worker must be started as a child process or a web worker.
 	 * It listens for RPC messages from the parent process.
 	 */
@@ -1341,6 +1331,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  exports.add = worker.register;
 	}
 
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./../node_modules/process/browser.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()))))
 
 /***/ })
 /******/ ])
