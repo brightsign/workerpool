@@ -15,10 +15,14 @@
     "pool",
     "isomorphic"
   ],
-  "main": "./index.js",
+  "main": "./dist/workerpool.js",
+  "web": {
+    "./dist/fsconnector.js": "./dist/fsconnector.browser.js"
+  },
   "scripts": {
-    "build": "gulp",
-    "watch": "gulp watch",
+    "build": "webpack && webpack --config ./webpack.config.browser.js",
+    "watch-node": "webpack --watch",
+    "watch-browser": "webpack --watch --config ./webpack.config.browser.js",
     "test": "mocha test --timeout 10000",
     "coverage": "istanbul cover _mocha -- test; echo \"\nCoverage report is available at ./coverage/lcov-report/index.html\""
   },

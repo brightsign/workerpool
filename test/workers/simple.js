@@ -1,5 +1,8 @@
+require('../utilities/environment');
+
 // a simple worker
 var workerpool = require('../../index');
+
 
 function add(a, b) {
   return a + b;

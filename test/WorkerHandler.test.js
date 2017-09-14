@@ -1,6 +1,9 @@
+require('./utilities/environment');
+
 var assert = require('assert'),
     Promise = require('../lib/Promise'),
     WorkerHandler = require('../lib/WorkerHandler');
+
 
 function add(a, b) {
   return a + b;
