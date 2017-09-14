@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: './index',
   output: {
@@ -9,12 +11,18 @@ module.exports = {
   target: 'web',
 
   resolve: {
-    extensions: ['.js']
+    extensions: ['', '.js', '.json']
   },
   node: {
     __dirname: false
   },
-
+  externals: {
+    child_process: 'commonjs child_process',
+    os: 'commonjs os'
+  },
+  plugins: [
+    new webpack.DefinePlugin({ '__PLATFORM__': JSON.stringify('browser') })
+  ],
   module: {
     rules: [
 

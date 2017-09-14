@@ -1,3 +1,5 @@
+require('./utilities/environment');
+
 var assert = require('assert'),
     Promise = require('../lib/Promise'),
     Pool = require('../lib/Pool');

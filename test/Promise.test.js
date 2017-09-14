@@ -1,3 +1,5 @@
+require('./utilities/environment');
+
 var assert = require('assert'),
     Promise = require('../lib/Promise');
 
@@ -236,7 +238,7 @@ describe ('Promise', function () {
       var p = new Promise(function (resolve, reject) {
         setTimeout(function () {
           reject(1);
- 
+
           assert.equal(p.resolved, false);
           assert.equal(p.rejected, true);
           assert.equal(p.pending, false);

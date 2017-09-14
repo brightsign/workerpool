@@ -21,7 +21,8 @@
   },
   "scripts": {
     "build": "webpack && webpack --config ./webpack.config.browser.js",
-    "watch": "gulp watch",
+    "watch-node": "webpack --watch",
+    "watch-browser": "webpack --watch --config ./webpack.config.browser.js",
     "test": "mocha test --timeout 10000",
     "coverage": "istanbul cover _mocha -- test; echo \"\nCoverage report is available at ./coverage/lcov-report/index.html\""
   },

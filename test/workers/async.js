@@ -1,3 +1,5 @@
+require('../utilities/environment');
+
 // a worker which does initialization asynchronously
 var workerpool = require('../../index');
 
