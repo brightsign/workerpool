@@ -11,7 +11,7 @@ module.exports = {
   target: 'web',
 
   resolve: {
-    extensions: ['', '.js', '.json']
+    extensions: ['.js', '.json']
   },
   node: {
     __dirname: false
@@ -21,7 +21,8 @@ module.exports = {
     os: 'commonjs os'
   },
   plugins: [
-    new webpack.DefinePlugin({ '__PLATFORM__': JSON.stringify('browser') })
+    new webpack.DefinePlugin({ '__PLATFORM__': JSON.stringify('browser') }),
+    new webpack.LoaderOptionsPlugin({ debug: true })
   ],
   module: {
     rules: [

@@ -11,7 +11,7 @@ module.exports = {
   target: 'node',
 
   resolve: {
-    extensions: ['', '.js', '.json']
+    extensions: ['.js', '.json']
   },
   node: {
     __dirname: false

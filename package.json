@@ -16,8 +16,8 @@
     "isomorphic"
   ],
   "main": "./dist/workerpool.js",
-  "web": {
-    "./dist/fsconnector.js": "./dist/fsconnector.browser.js"
+  "browser": {
+    "./dist/workerpool.js": "./dist/workerpool.browser.js"
   },
   "scripts": {
     "build": "webpack && webpack --config ./webpack.config.browser.js",
@@ -32,7 +32,7 @@
     "istanbul": "^0.4.4",
     "mocha": "^2.5.3",
     "uglify-js": "2.8.29",
-    "webpack": "^1.13.1"
+    "webpack": "^2.6.1"
   },
   "dependencies": {
     "object-assign": "4.1.1"
